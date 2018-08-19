@@ -1,3 +1,5 @@
+.PHONY: example
+
 NAME := tamakiii-sandbox-openscad-with-clojure
 PORT := 9998
 
@@ -9,6 +11,9 @@ repl: setup
 
 login:
 	docker run --rm -it -v $(CURDIR):/work $(NAME) bash
+
+example:
+	cd example && lein run -m example.core/foo xxxx
 
 clean:
 	docker rm $(NAME)
