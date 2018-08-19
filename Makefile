@@ -1,13 +1,14 @@
 NAME := tamakiii-sandbox-openscad-with-clojure
+PORT := 9998
 
 setup:
 	docker build . -t $(NAME)
 
-build: setup
-	docker run --rm $(NAME)
+repl: setup
+	docker run --rm -it -v $(CURDIR):/work -p $(PORT) $(NAME)
 
 login:
-	docker run --rm -it $(NAME) bash
+	docker run --rm -it -v $(CURDIR):/work $(NAME) bash
 
 clean:
 	docker rm $(NAME)

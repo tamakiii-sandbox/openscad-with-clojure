@@ -4,4 +4,4 @@ WORKDIR /work
 COPY project.clj /work
 
 RUN lein deps
-CMD lein run
+CMD lein repl :start :port 9998
